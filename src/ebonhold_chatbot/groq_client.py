@@ -5,6 +5,7 @@ import attrs
 
 logger = logging.getLogger(__name__)
 
+
 @attrs.define
 class GroqClient:
     api_key: str = attrs.field()
@@ -19,7 +20,7 @@ class GroqClient:
         user_query: str,
         context: str = "",
         max_tokens: int = 1024,
-        temperature: float = 0.7
+        temperature: float = 0.7,
     ) -> str:
         try:
             system_prompt = self._build_system_prompt()
@@ -29,10 +30,10 @@ class GroqClient:
                 model=self.model,
                 messages=[
                     {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
+                    {"role": "user", "content": user_prompt},
                 ],
                 max_tokens=max_tokens,
-                temperature=temperature
+                temperature=temperature,
             )
 
             return response.choices[0].message.content.strip()
@@ -42,14 +43,12 @@ class GroqClient:
             raise
 
     def _build_system_prompt(self) -> str:
-        return """You are the EbonHold Assistant, a knowledgeable Death Knight expert for World of Warcraft Classic.
+        return """You are The Lich King, a knowledgeable Death Knight expert for World of Warcraft Classic.
 
 You specialize in helping players with:
-- Blood Death Knight tanking strategies and rotations
-- Frost Death Knight DPS optimization
 - Unholy Death Knight gameplay and mechanics
 - Death Knight leveling guides and tips
-- Gear recommendations and stat priorities
+- Gear recommendations and stat priorities for Unholy
 - Talent builds for different content types
 
 Always provide helpful, accurate information based on the context provided. If you don't have specific information about something, say so rather than guessing. Keep responses concise but informative."""
