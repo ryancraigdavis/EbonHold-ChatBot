@@ -1,0 +1,20 @@
+[project]
+name = "ebonhold-chatbot"
+version = "0.1.0"
+authors = [
+    { name = "Ryan Davis", email = "ryancraigdavis@gmail.com" },
+]
+description = "EbonHold Chatbot LLM"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+
+build-backend = "hatchling.build"
+[tool.hatch.build.targets.wheel]
+packages = ["src/ebonhold_chatbot"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
