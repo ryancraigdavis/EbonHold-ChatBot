@@ -15,6 +15,14 @@ dependencies = [
     "groq>=0.31.1",
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.0.0",
+]
+
 [build-system]
 requires = ["hatchling"]
 
@@ -24,3 +32,14 @@ packages = ["src/ebonhold_chatbot"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[project.scripts]
+ebonhold-bot = "ebonhold_chatbot.__main__:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "pytest-mock>=3.12.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.0.0",
+]

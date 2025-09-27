@@ -12,6 +12,15 @@ venv/
 .venv/
 .env
 
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+.cache
+
 # Doppler
 .doppler.yaml
 
@@ -24,3 +33,12 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Temporary files
+*.tmp
+*.temp
