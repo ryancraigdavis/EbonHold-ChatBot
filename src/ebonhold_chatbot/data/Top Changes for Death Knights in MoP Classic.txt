@@ -1,0 +1,41 @@
+﻿Top Changes for Death Knights in MoP Classic
+
+
+With MoP Classic launching on July 21st, you might be wondering how Death Knights will change as we move away from Cataclysm Classic. I’ll be going over the most notable changes to the class, but highlighting specifically Frost and Unholy. We can already tell both Unholy and Frost DK are likely going to pump at the start of MoP Classic with tier 14, so if you happen to like playing Unholy or Frost DK, you’re in luck. Or, if you’re coming back after taking a break from the game, now’s as good a time as ever to get back into re-experiencing some of the glory days of Death Knight that we had through Wrath Classic. I’m going to breakdown the ability, talent and glyph changes that are worth noting since some changes either likely won’t be hardly used or aren’t really changes that affect our rotation or damage output from what we can tell so far. 
+
+
+The first thing I need to note here is If you played in original Mists of Pandaria launch, class balancing is going to be a bit different than it was before since we’ll be playing on the last patch, patch 5.4, introduced at the end of original MoP. A nice little twist in my opinion that creates some unknowns for players who have already experienced mop. From my experience playing on the beta, this will seemingly push Unholy and potentially Frost DK towards the top of the meters.
+
+
+Let’s start with the ability changes for both Frost and Unholy DK. The most obvious change here is we now have an execute phase ability in Soul Reaper. Soul Reaper Strikes an enemy for 130% weapon damage and afflicts the target with Soul Reaper. After 5 seconds, if the target is below 35% health, this effect will deal additional shadow damage. If the enemy dies before this effect triggers, we gain 50% haste for 5 seconds.This is a much needed addition to help increase the viability of Unholy and Frost DK since we really saw them drop off on the meters at the end of Cataclysm. This can also be very useful for scenarios where you have adds that die quickly. Throw out a Soul Reaper and get a nice haste bonus when it dies. Very nice and welcome addition.
+
+
+Blood Tap also changes here for DK as it becomes a talent. Each Death Coil, Frost Strike, or Rune Strike generates 2 blood Charges, up to a maximum of 12 charges. Blood Tap consumes 5 blood charges to activate a random fully-depleted rune as a death rune. So, instead of being a CD like before, you have to build charges with either death coil for Unholy or Frost Strike for Frost. This adds some more nuance to the rotation and its’ one more thing we have to juggle and keep track of in our rotation.
+
+
+Another notable ability change is plague strike now applies both frost fever and blood plague. This is an interesting change because it will save us a global that we previously used on icy touch in our opener. Now, we only need plague strike to apply both our diseases. We still have Outbreak to snapshot our diseases as well. 
+
+
+
+
+
+
+Talents for all DK specs have changed significantly in that they are much simpler than the old talent tree we had before. Instead of having leftover talent points you could dip in the other spec trees with, the available talents are now all the same for each spec. We now only have 3 options to choose from at each level in the talent tree.
+
+
+Anti-Magic Zone or AMZ is now available to all specs instead of being exclusive to the Unholy talent tree. It’s a baseline talent, and it no longer requires an unholy rune like it did before. And instead of it being placed where the DK is, it has a reticle similarly to Death and Decay and allows you more flexibility with where you place it. Instead of having a damage absorption amount, it now lasts for a 3 second duration.
+
+
+Some other interesting and new talent additions include Roiling Blood, Plague Leech, and Unholy Blight. These are new methods of spreading and applying diseases. Roiling Blood in particular will be great for AoE scenarios in which you need to spread your diseases. Instead of hitting pestilence, you can actually apply them with just blood boil. This will save you a global and allow you to go right into spamming blood boils as an Unholy DK. A minor, but nice quality of life change from before. Plague Leech will consume your diseases and give you 2 death runes in return while Unholy Blight will apply your diseases on all enemies within 10 yards every second for 10 seconds.
+
+
+Death’s Advance may be have some niche uses where you need just a little more movement speed. Asphyxiate is a nice stun ability that lasts 5 seconds and would replace strangulate.
+
+
+Death Pact is now a talent, and so is runic empowerment instead of a passive innate ability like before. 
+
+
+And finally, in the last row of talents, you have Gorefiend’s Grasp which is actually a very nice mass grip ability you can use to pull enemies to another enemy or friendly target’s location and it may have its uses in some fights. Remorseless Winter is slowing ability that slows all things within 8 yards of you for a duration. Desecrated Ground is probably better for PvP scenarios as it frees you of loss of control effects and makes you immune to them for 10 seconds.
+
+
+Now, for some notable changes to glyphs. Since we will be starting on patch 5.4, we will have some new glyphs that were introduced in that patch. Some glyphs that were introduced in this patch were Glyph of Loud Horn, Glyph of Regenerative Magic, and Glyph of Festering Blood. Glyph of Loud Horn causes your horn of winter ability to generate an additional 10 runic power, but it doubles the cooldown. A very minor change. Glyph of Regenerative Magic might be one of the better major glyphs because it can cut Anti-Magic Shell’s cooldown by up to half if the shell expires after its full duration. The amount cut off the cooldown is based on the amount of damage absorbed. This could be great for generating more runic power on fights you can use AMS on to absorb magic. However, I don’t think it’s been functioning correctly on the beta, so we’ll have to wait and see how impactful this is. The 3rd glyph, glyph of festering blood, causes blood boil to treat all targets as though they have blood plague or frost fever applied. This would be great for short aoe bursts where you might not have enough time to get ticking disease damage. All the rest of our glyphs seem to be pretty minor overall, some of them functioning the  same as before and many of them nerfed in a sense. For example, the glyph of death and decay no longer increases the duration of death and decay, but rather, it just adds a slowing effect to the ability. Potentially useful in very niche scenarios, but not very impactful. If you feel I should’ve mentioned some other glyph changes, feel free to flame in the comments below, but that about covers it for my general overview of the changes for Death Knights in MoP Classic. Thanks for watching!

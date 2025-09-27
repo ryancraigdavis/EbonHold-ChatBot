@@ -1,0 +1,77 @@
+﻿With MoP Classic releasing in the next month, now is as good a time as ever to brush up on the basics of Unholy DK and how the class will play in the next expansion. Whether you’re someone who is returning to the game from Wrath Classic, you’re considering playing Unholy DK for the first time, or you’re a returning veteran from Cata Classic, this video will cover everything you need to know about Unholy DK to play it well. 
+
+
+Here’s a brief overview of everything I will cover in today’s video. I will start with explaining the basics of snapshotting, pet dynamics, pooling runic power, rune management, and 2-handed vs dual wield weapons for those of you who are returning from playing Unholy in Wrath.
+
+
+Snapshotting
+For starters, you might be asking, what is snapshotting and why is it important? For MoP, we snapshot our Frost Fever and Blood Plague diseases and it’s important because diseases make up the large majority of our damage profile. So, snapshotting our diseases means whatever strength and crit buffs you have the moment you apply your diseases are essentially “snapped” or applied for the full duration your diseases last. Strength and crit are the only stats that snapshot with our diseases. So, if I have a fallen crusader proc from my weapon enchant and apply my diseases, my diseases will have the fallen crusader buff applied for the whole duration they’re up.
+
+
+For MoP, we apply our diseases with either plague strike, outbreak, or Unholy Blight if you take the talent. With a typical opener, you start by applying your diseases with plague strike, continue the normal rotation, and you outbreak to snapshot your diseases once you have as many strength buffs as possible. 
+
+
+For example, if you watch this disease tracker here you can see the percentage increase as I receive more buffs from trinket procs, my synapse springs, blood fury, and fallen crusader proc. I start by applying my diseases with plague strike, you see my first trinket proc’d immediately on pull here, then my second, and then fallen crusader. I use blood fury and synapse springs, and snapshot my diseases with the highest possible percentage displaying on my tracker by using outbreak. Ideally, everything procs together before any one buff expires, but of course, there’s a bit of rng with that. But, that’s the basics of disease snapshotting.
+
+
+
+
+
+
+
+
+
+
+Pet Dynamics
+As an Unholy DK, managing your pets is essential given how much of your damage is from pets. We have a ghoul, gargoyle, and army of the dead. In the past, Gargoyle used to snapshot similar to our diseases with crit and strength or attack power. However, in MoP, all of ours pets are now dynamic, meaning, their power changes as ours does as buffs proc and expire. This means we’re no longer holding gargoyle as we wait for our procs. Instead, we want to try to use gargoyle before anything procs and before we use any on-use trinkets or abilities like synapse springs or blood fury. So, ideally, you would use Gargoyle just as you pull on a boss to maximize the uptime of all procs and strength buffs since gargoyle lasts 30 seconds and takes about 2.5 seconds to fly down.
+
+
+So, for example, if we had a 10 second pull timer, we would cast army of the dead at about 8 seconds like I do here, pre-pot at one second, and summon your gargoyle on pull.
+
+
+In tank-and-spank fights, open with all cooldowns and your pre-potion to benefit from the longest possible buff window.
+
+
+You can use only one potion per combat. If you pre-pot before the boss is engaged, you can use a second during the fight.
+
+
+Gargoyle remains stationary when summoned. Ensure it’s placed in a safe location to survive its full duration. Example: Warmaster Blackhorn
+
+
+Pooling Runic Power
+Sometimes it is more optimal to “pool” your runic power. What this means is instead of continuing to dump our runic power into death coils like we typically would, we let our runic power build up or pool. This technique is important for increasing our dark transformation uptime on our ghoul, an important buff that increases our ghoul’s damage output in both single target and aoe scenarios. If we pool our runic power as dark transformation expires, we can quickly get off 3 death coils in succession to get closer to the 5 shadow infusion stacks we need for another dark transformation. You can see me do this here. At about 8-10 seconds left on my ghoul’s dark transformation, I stop using death coil and start saving my runic power until it maxes out. 
+
+
+Rune Management
+Runes are one of your main resources you use for your abilities as an Unholy DK and you have two of each kind of rune between frost, blood, and unholy. You want to keep one of each kind of rune recharging at all times. We never want two of the same kind of rune available during our rotation. We also have death runes which can be spent on any ability. We receive death runes through our reaping passive ability that states blood strike, pestilence, festering strike, ice touch, or blood boil cause the runes used to turn into death runes. We don’t use blood strike in our rotation anymore and icy touch is now very rarely used since we apply both diseases with plague strike, so for all inte nsive purposes, we get death runes with Festering Strike in single target scenarios and blood boil or pestilence in aoe scenarios. Therefore, we want to convert our Blood and Frost runes with Festering Strike which requires one of each in our rotation, so we can get more death runes. We use our death runes along with unholy runes to spend them on as many scourge strikes as possible, death and decay on CD, and dark transformation when needed. Managing our runes becomes this revolving door of swapping between death runes and our normal sets of runes.
+ 
+2-handed vs dual wield weapons
+For those of you coming back to the game from Wrath Classic, you remember the dual wield morb spec being the dominant playstyle for most of the expansion until you got your hands on the legendary shadowmourne. However, with the way our rune regeneration system got reworked in Cata with our runes no longer having their own CD and with scourge strike only costing a single unholy rune instead of an unholy and frost rune, dual wield Unholy is no longer viable and something of the past. Unholy is now only played with a 2-handed weapon. Scourge strike has become one of the larger portions of our damage in comparison to how it was in Wrath classic as a result of having much better weapons and scourge strike scaling with your weapon damage. This is why we no longer play the dual wield unholy playstyle that dominated wrath classic. 
+
+
+Other Tips and Tricks
+Positioning is important. Make sure you are attacking from behind. This Increases your hit chance, avoids parries, and reduces incoming damage by avoiding any frontal attacks.
+
+
+There are a few things to consider in AoE and Cleave Scenarios. Because our diseases are ticking damage over time (or dots), it might not be worth spreading them to adds if the adds aren’t living long enough. Our diseases tick once every 3 seconds. Also, not all AoE counts toward your boss parses, so knowing the rules for each encounter is important if you’re attempting to parse.
+
+
+It’s important to know and familiarize yourself with our defensive utilities. We have both Icebound Fortitude (IBF) and Anti-Magic Shell (AMS) as personal cooldowns to survive and we have anti-magic zone (AMZ) as a raid cooldown if we talent into it. IBF is a 3 minute cooldown that immunes stun effects and reduces all damage taken by 20% for 12 seconds. AMS absorbs 75% of all incoming magic damage up to a maximum of 50% of your health. The damage absorbed generates runic power and lasts 5 seconds. AMZ also reduces magic damage by 40% and places a zone on the ground for the raid to stand inside. It lasts for 3 seconds.
+
+
+Use AMS aggressively to build runic power on fights you can use it. Depending on the outgoing magic damage on certain boss fights, you can get one or sometimes multiple full runic power bars worth of runic power. Make sure you are aware of the kind of damage boss spells do, so familiarize yourself with their abilities and which ones are magic damage.
+
+
+Make sure you utilize mind freeze to interrupt casts as often as possible. Mind freeze is off the GCD, so it isn’t a hindrance to your rotation to use. If you coordinate interrupts with your raid, this will help consistency and almost eliminate the cost in DPS when it’s done well.
+
+
+Track the internal cooldown (or ICD) of your trinkets. This helps with planning for burst windows and managing other things like your diseases when you need a new snapshot. Use your engineering gloves, racial abilities, and potions in sync with burst windows to maximize your damage output. Depending on the fight, you may want your trinkets to proc early or late. You can use ICDs to your advantage by swapping your trinkets before you pull to manipulate their cooldown. You can also do this just before trash or inbetween trash packs to avoid accidentally putting a trinket on cooldown before a boss.
+
+
+Bonus! Performance Tools
+**WoWSims**: Run simulations of your character to optimize gear, enchants, professions, and racial choices. Best resource for understanding your scaling.
+   * **Warcraft Logs**: Analyze your parses, improve personal performance, and enter the competitive side of raiding. Learn what counts for logs (e.g., AoE vs boss phases).
+   * **Next Action Guide (NAG)**: In-game rotation helper developed by top players. Simplifies your UI by reducing tracker clutter and showing the exact next action to take. Great for both beginners and pros. Free on training dummies; premium access elsewhere. Code “Ketchupchips” gives 10% off.
+
+
+That covers today's video, if you have any additional questions, comment below or find me on the Ebon Hold discord linked in the description. Thanks for watching!

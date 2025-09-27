@@ -1,0 +1,75 @@
+﻿Unholy DK Rotation Guide | MoP Classic
+Welcome to the rotation guide for Unholy DK where we’ll cover everything you need to know to be the best Unholy DK you can be for MoP Classic. After some extensive raid testing on the beta, we know Unholy is going to be one of the strongest specs for progression going into the first raid phase. Unholy is absolutely blasting and is one of the few specs that Blizzard hasn’t touched with any buffs or nerfs, so we know it’s in a great state right now. Which is one of many reasons why you should be absolutely certain you know everything you need to know to play Unholy well.
+
+
+But, before we jump into all of that, let me share with you a little more about myself and why I’m making this video because you might be thinking to yourself “Who the heck is this guy and why should I listen?” Well, the short answer is, I’ve been playing Unholy DK at a high level for quite some time. I raid with one of the top progression guilds in the World for classic, and I parse well despite not being in a parsing guild. I also have the pleasure and privilege of being one of the mods in the Ebon Hold discord where I help answer questions about all things Unholy DK. So, if you find this guide helpful, be sure to like and subscribe as I will be continuing to release DK and Unholy-related content throughout MoP Classic and beyond. 
+
+
+Talents/Glyphs
+Let’s start with the best Talents for Unholy DK. If you’re returning from Wrath or Cataclysm, you will immediately notice the talent system looks entirely different. It’s much simpler than before as we only have 3 options to choose from at each tier. 
+
+
+First, plague leech is going to be the best option from the first row. It’s one of the only talents that offers a dps increase for us. It’s our best option in single target scenarios, and it has some uses for longer AoE bursts. Roiling blood would be a second option, but I would really only recommend it as a niche use for short AoE bursts when adds aren’t living long enough for our diseases to tick. Unholy Blight isn’t really ideal because it would mess up our snapshot unless you used a cancel aura macro with it.
+
+
+In the second row, Anti-Magic Zone is going to be by far our best option. It’s an incredibly powerful raid defensive CD that your raid group will most certainly be utilizing constantly throughout. In comparison to before, it now doesn’t have a damage cap and instead protects everyone inside from spell damage by 40%. A nice change is you can actually place it where you want similarly to death and decay, so it doesn’t have to be on top of you. 
+ 
+Next, Death’s Advance is, in my opinion, our best option. Each of these abilities are more for utility and given our mobility isn’t great, death’s advance can be nice in a pinch. Asphyxiate might have it’s niche uses as an additional stun.
+
+
+Death Pact is the next talent we would go with. It’s now a talent instead of an ability, and it only sacrifices half of your ghoul’s health instead of all of it. 
+
+
+Blood tap is the next best option. Blood tap is what will help smooth out our rotation and help us in moments when we’re running out of runes or runic power to use. It’s now something we will use more often since it now has charges up to a maximum of 12 and we’ll get them from death coils. You only need 5 to generate a randomly-depleted rune as a death rune.
+
+
+And finally, the last row are all utility abilities, but Gorefiend’s Grasp has a lot of uses during trash and even on some bosses. It’s a mass grip ability that can be useful for grouping up mobs to contain AoE. Remorseless winter might have some niche uses as a slowing ability while desecrated ground is more of a PvP ability in my opinion. 
+
+
+For glyphs, the best set for single target is going to be Loud Horn, Anti-Magic Shell, and Regenerative Magic. Loud Horn is really one of the only damage increasing glyphs we have or at least one of the few that sims as a dps increase. Regenerative magic is really nice for fights when we’re using AMS for additional runic power constantly. It will allow us to get more uses of AMS which is always nice. AMS just increases the absorption amount.
+
+
+For AoE scenarios, I would use Festering Blood, Pestilence, and keep Regen Magic as our one static glyph. Festering Blood is important for our first blood boil if we choose to use the roiling blood talent since the damage increase from our diseases doesn’t happen until after they’ve been applied. In other words, blood boil won’t get the damage bonus from our diseases when we’re trying to spread them with roiling blood. It’s also just nice to have when we may not have enough time to spread our diseases because the adds don’t live long or we end up missing an add in spreading our diseases.
+
+
+For minor glyphs, I’d recommend Army of the Dead to prevent army from taunting, death’s embrace for those moments our ghoul is dying, and Tranquil grip can be nice, so you can grip without taunting. None of our minor glyphs have hardly any effect on our dps, so if you want to change any of them for something cosmetic like glyph of the skeleton or geist, it won’t hurt you much.
+
+
+Rotations
+Single target: So now, for our rotation. The most optimal single-target opener for us would be to use Army of the Dead about 8 seconds before pull. Pre-pot at one second. Since Gargoyle is now dynamic, we’re going to use it the moment we pull the boss. You can open with death and decay as you’re running in (do this only if you know for certain where the boss is going to be tanked), apply our diseases with plague strike, use two festering strikes to convert our frost and blood runes into death runes. Use Unholy Frenzy now that gargoyle is down. Dump runic power with death coil until you run out. We’re going to use scourge strikes on all our death runes, but we want to prioritize using additional death coils until we have 5 stacks of shadow infusion for dark transformation. We want as much dark transformation uptime as possible to empower our ghoul, so it’s important we’re dumping death coils once it expires later. We’re doing all this while monitoring our trinket procs, and rune of the fallen crusader, so we know when to use Outbreak to snapshot our diseases. Once we have all trinket procs and fallen crusader, we will use our synapse springs from engineering, blood fury if you’re orc, and cast Outbreak to get the best disease snap as possible. If you notice any of your trinket procs, fallen crusader, or your potion is going to expire while you’re still waiting for one to proc, use your outbreak early to avoid losing any of them in your snapshot. There may be times when one of your trinkets or fallen crusader doesn’t proc before something expires, so it’s important you don’t wait too long and ruin your snapshot early on. Use your empowered rune weapon when all runes are on CD. Whether you choose to use this in your opener or not depends on two things. Whether you are lusting to start or the fight is longer than 5 minutes. If the fight is over 5 minutes, use it in your opener, so you can use it an additional time later on. If the fight isn’t over 5 minutes and your group is using lust on pull, save it for when you use your second potion later in the fight.
+
+
+From here, you will continue spending your death and unholy runes on scourge strikes and death and decay on cooldown. Use Festering Strike to convert your blood and frost runes, and dump your runic power with death coil when you have no runes to spend or you have a sudden doom proc for a free death coil. Make sure you aren’t overcapping your blood tap charges past 12. You are wasting charges when you use additional death coils when you’re already at 12 charges. Use your blood tap to get additional scourage strikes. 
+
+
+When dark transformation expires, prioritize getting another 5 shadow infusion stacks as quick as possible, so you can get another dark transformation for your ghoul. You can optimize this by choosing to pool your runic power by allowing your runic power to get to cap roughly 7-8 seconds before dark transformation expires. Then, once it expires, dump your full runic power bar into 3 death coils. To be clear, this doesn’t mean you stop using other abilities during the 7-8 seconds you’re pooling runic power. It’s okay to overcap on runic power during this time. Still continue the normal rotation.
+
+
+When your diseases are close to expiring, you can choose to use additional festering strikes to extend your diseases until you have your trinket procs up for another good disease snapshot. Before you snap your diseases again, use your plague leech to replenish two additional runes as death runes. Make sure you actually have 2 runes depleted fully or else you will only get one rune back if you only have one.This is the only time you should be using plague leech as Unholy, just before you’re going to resnap your diseases.You shouldn’t be using plague leech on cooldown. You will essentially be using it naturally once per minute or so if you’re doing the rotation properly. You never want to allow your diseases to fall off except the moment they’re consumed by plague leech. However, If you’re not using plague leech, just reapply your diseases with outbreak if it’s off cooldown or with plague strike. You can extend your diseases with festering strike by using some of your death runes if you see your trinkets internal cooldown is close to being done.
+
+
+When you have all runes on CD and you don’t have enough runic power for another death coil, you can use horn of winter to generate more runic power. This is last in priority for our rotation.
+
+
+When the boss gets close to 35%, start prioritizing soul reaper over everything else. Soul reaper is our execute ability and does massive damage. You will have to wait 6 seconds between each cast, so I would recommend making sure you’re saving a death or unholy rune for the moment you can cast another one.
+
+
+Last tip, if you notice you are overcapping on runic power and regenerating runes faster than you can spend them, it is okay to use festering strike once or twice, so you always have one of each type of rune on cooldown. You always want at least one Frost/Blood/Unholy rune on cooldown. This will likely only be the case sometimes during lust. You may also want to use festering strike with a blood/death rune or frost/death rune if you notice you’re about to have two blood or two frost runes available off cooldown. This can be done to help your runes sync back up. 
+
+
+Make sure you are using your synapse springs, blood fury, unholy frenzy, and gargoyle on CD. Always make sure you summon your gargoyle and wait for it to fly down before using your CDs. Keep your blood fury for your next gargoyle. It’s worth waiting for the minute left on the cooldown of gargoyle since blood fury is a two minute cooldown.
+
+
+AoE rotation: Now, our AoE rotation is relatively simple. Apply your diseases with plague strike or outbreak. Cast death and decay once all adds are grouped. Spread your diseases with pestilence if you’re not using roiling blood. Spend all blood and death runes on blood boil. Because of our reaping passive ability, blood boil converts your blood runes to death runes which is very nice for our AoE rotation. Build stacks of shadow infusion with death coils to cast dark transformation. Your ghoul does sweeping claws when it’s empowered which hits up to 3 targets. Cast death coil when you have no runes available. Convert your frost runes to death runes by using icy touch. Use scourge strikes on unholy runes when you have no runic power.
+
+
+Next-Action Guide
+If you're looking to be competitive or just sharpen your gameplay, then the Next Action Guide is the addon for you. It’s an in-game rotation helper developed by some of the top players around the world. It helps you learn your rotation quicker by projecting the next ability to use and it simplifies your UI by reducing tracker clutter. Great for both beginners and pros, and it’s available for all classes and specs. You can use it for free on training dummies; or go premium to unlock full functionality everywhere else. Use code “Ketchupchips” for 10% off your subscription.
+
+
+
+
+That covers today's video, if you have any additional questions, comment below or find me on the Ebon Hold discord linked in the description. Thanks for watching! God bless!
+
+
+Video description: Unholy DK pumps and is going to be S-tier in MoP. This guide covers the best talents and glyphs along with both the single target and AoE rotations for Unholy DK in World of Warcraft Mists of Pandaria Classic. I go over how to determine what to prioritize in the rotation and some of the nuances with specific scenarios.

@@ -1,0 +1,62 @@
+﻿What is Festerblight?
+Yo, how’s it going? If you’ve been lurking in the DK discord recently or reading through the ancient texts for Unholy DK, you might’ve seen some whisperings of something called Festerblight. And, you might be wondering, what the hell is Festerblight? Well, I’m here to clear that up in today’s video. I’ll go over what it is, how it is different from the normal rotation, and scenarios when you can use it.
+
+
+But, before we jump into it, if you learn something, make sure you like the video and subscribe to the channel, so you don’t miss out on my other upcoming guides on all things Unholy DK and MoP classic.
+
+
+So, Why is it called Festerblight?
+Festerblight is a modified version of the normal rotation that attempts to keep your original opening snapshot for the duration of the fight. This came to be back in original MoP in patch 5.2 when Throne of Thunder was the current raid because your best snapshot typically only happened once during the opener of the fight due to the bis trinkets at the time which we’ll cover a little more later. But, basically, it came to be called Festerblight because the rotation was simply applying your diseases with Unholy Blight and then prioritizing more festering strikes over scourge strikes to maintain the same snapshot. Each festering strike lengthens the duration of your disease snapshot by an additional 6 seconds. So, this rotation relies on the increase in disease damage output being worth more than what you would lose in scourge strike damage with the standard rotation.
+
+
+So, you might be wondering, when would I use Festerblight? Well, with where we are currently in phase 1, there are a few stipulations. It must be a fight where you can sit on the boss the entire time. If you’re losing boss uptime for having to swap targets or because of mechanics, this really hurts Festerblight because you risk losing your initial disease snapshot. This leaves us with Gara’jal and Feng as options for Festerblight. 
+
+
+The other stipulation to consider right now, is since scourge strike scales with weapon damage, it is more beneficial when you have a weaker weapon until we have access to trinkets that provide more strength. This is because the damage output from scourge strike is less and therefore, the loss for using festering strike more is less too. So, if you’re more concerned about min-maxing, you could make the case for Festerblight if you have a 463 or 476 ilvl weapon. 
+
+
+The 3rd stipulation to consider is are there any % damage increasing buffs? So, in Mogu’shan Vaults, for example, you could do festerblight on Gara’jal. Festerblight is especially viable on Gara’jal because you can snapshot the % damage increase you gain from going down with one of the totems and coming back to the surface. And as a DK, you can drop down on the very first totem that spawns, use death pact and a healthstone immediately, then return to the surface for the buff without needing a healer to go down with you. You can see me execute this here where I managed to grab, at the time, world 5th for Unholy DK by doing this. And this was without doing the cringe strategy of just padding on the shadowy minions. 
+
+
+Another thing to consider is if you’re newer to Unholy DK, and you’re having a harder time with the normal rotation, you may do more damage with the Festerblight rotation because it’s lower casts per minute, and there are less things to track. It’s a lot more of a relaxed style of play, and this might be something that would help you enjoy playing more or perform better because you can focus more on mechanics and a little less on your rotation. With Festerblight, you don’t have to worry about plague leech since you would use unholy blight instead, and you don’t have to track blood tap stacks because it performs better with runic empowerment instead. This is because you don’t care what kind of rune you receive when playing festerblight since you just need additional runes whether it be blood, frost or death runes for more festering strikes, and we care less about the timing of when we receive runes because the percentage of your damage is more your diseases.  
+
+
+So, here’s the rotation priority for if you were going to play Festerblight. I’d recommend watching my normal rotation video first if you haven’t already if you’re newer to unholy DK. There will be a link to it somewhere on the screen here.
+
+
+1. Apply your diseases with Unholy Blight/Plague Strike/Outbreak on pull
+2. Snapshot when you have all your procs, synapse springs, potion, and blood fury (if your an orc) with outbreak or plague strike if you didn’t already with one of the ticks of Unholy Blight
+3. Dump runic power with death coil and use dark transformation on CD
+4. Use your blood/frost/death runes on Festering Strikes to extend your snapshot.
+5. Use unholy runes on scourge strikes and DnD on CD
+
+
+Also, note that this is just the differences from the normal rotation. You still use CDs and operate within the typical priority unless otherwise mentioned. 
+
+
+To put it simply, it’s the normal rotation altered with unholy blight to apply diseases and prioritizing festering strike over scourge strike. If you want to check if you’re doing this correctly, you can use this formula courtesy of Ledski to calculate the number of festering strikes you need to use. 
+
+
+(encounter duration - 40)/6
+
+
+You subtract 40 from the encounter duration since this is about how long the initial snapshot lasts with the normal rotation assuming you get your snapshot 10 seconds into the fight and diseases last 30 seconds and divide by 6 to get the number of festering strike casts since festering strike extends your disease duration by 6 seconds with each cast.
+
+
+You might be wondering now does Festerblight become stronger later? The short answer to that, in theory, is yes. We don’t have sims available for Throne of Thunder yet, but if you think back to the beginning of the video, I mentioned this was theorycrafted during patch 5.2 originally. The reason behind it being the bis trinkets at the time and how rppm (or real procs per minute) worked. In patch 5.2, you would either pair the Fabled Feather of Ji-Kun and Primordius’ Talisman of Rage or Fabled Feather and Brutal Talisman of the Shado-Pan Assault. Since we’re playing on patch 5.4, I assume we will be seeing their nerfed version, but from trinket procs alone, we get up to a whopping 28k strength when at 10 stacks of fabled feather and 5 stacks of Primordius’ talisman. That’s a massive increase compared to the 6.6k strength we get from using Lei Shen’s and Relic of Xuen. And with these trinkets introduced real procs per minute which meant proc chances become based on the time elapsed since the last POTENTIAL proc trigger, rather than being based on a fixed internal cooldown and affected by haste. Since we’re playing on patch 5.4 already, these trinkets won’t scale with haste at all, and instead go off a low flat proc per minute. On top of this, they have increased chances to proc on pull in comparison to the normal rppm of 1.21 for feather and 3.5 for talisman. This means there’s more variance after the opener and it’s less likely you get another window where you have the full stacks of strength from each trinket to align, and thus, this opens the door to Festerblight being the best style of play in the next raid tier, Throne of Thunder. If that was confusing, just know you’re more likely to get all your procs on pull than you are to have them align later in the fight. So, you might want to familiarize yourself with Festerblight now before we get there and you get left behind on the meters.
+
+
+And that about covers it for what you need to know about Festerblight. Thanks for watching! God bless!
+
+
+
+
+ToT Trinkets
+https://www.wowhead.com/mop-classic/item=96470/fabled-feather-of-ji-kun#dropped-by                
+https://www.wowhead.com/mop-classic/item=94508/brutal-talisman-of-the-shado-pan-assault
+https://www.wowhead.com/mop-classic/item=96501/primordius-talisman-of-rage
+
+
+Music provided by Chillhop Music
+anbuu, Needraw - Canopys
+https://chll.to/db42b7fe
