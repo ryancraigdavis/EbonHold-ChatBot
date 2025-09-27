@@ -30,7 +30,7 @@ A Discord chatbot powered by Groq LLM that answers Death Knight questions using 
 
 2. **Install dependencies**:
    ```bash
-   uv sync
+   uv sync --dev
    ```
 
 3. **Configure secrets with Doppler**:
@@ -45,12 +45,12 @@ A Discord chatbot powered by Groq LLM that answers Death Knight questions using 
 
 5. **Load guides into knowledge base**:
    ```bash
-   doppler run -- uv run python -m ebonhold_chatbot.load_guides
+   uv run doppler run -- python -m ebonhold_chatbot.load_guides
    ```
 
 6. **Run the bot**:
    ```bash
-   doppler run -- uv run python -m ebonhold_chatbot
+   uv run bot
    ```
 
 ## Discord Bot Setup
@@ -83,6 +83,69 @@ src/ebonhold_chatbot/
 ├── knowledge_base.py  # Vector database (ChromaDB)
 ├── load_guides.py     # Guide loading script
 └── data/              # Your DK guide files
+```
+
+## Testing
+
+The project includes comprehensive unit and integration tests using pytest.
+
+### Test Commands
+
+**Local testing (without environment variables):**
+```bash
+# Activate virtual environment
+source .venv/bin/activate
+
+# Run all working tests
+uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py -v
+
+# Run tests with coverage
+uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py --cov=src/ebonhold_chatbot --cov-report=html --cov-report=term-missing
+
+# Run individual test files
+uv run pytest tests/unit/test_config.py -v
+uv run pytest tests/unit/test_groq_client.py -v
+uv run pytest tests/unit/test_simple_working.py -v
+```
+
+**Testing with Doppler environment:**
+```bash
+# Run tests with environment variables from doppler
+doppler run -- uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py -v
+
+# Coverage with doppler
+doppler run -- uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py --cov=src/ebonhold_chatbot --cov-report=html
+```
+
+### Test Structure
+
+- `tests/unit/` - Unit tests with complete mocking of external dependencies
+- `tests/integration/` - Integration tests with realistic workflows
+- `tests/conftest.py` - Shared test fixtures
+
+### Test Features
+
+- **Complete Mocking**: All external dependencies (Discord API, Groq API, ChromaDB, file I/O) are mocked
+- **Parametrized Tests**: Multiple scenarios with descriptive IDs using `pytest.param`
+- **Async Support**: Proper async/await testing with `pytest-asyncio`
+- **Coverage Reports**: HTML and terminal coverage reporting
+- **Test Markers**: `unit`, `integration`, and `slow` markers for selective test running
+
+## Development
+
+**Clean up test artifacts:**
+```bash
+uv run clean-cache
+```
+
+**Install new dependencies:**
+```bash
+uv add <package-name>
+```
+
+**Install test dependencies:**
+```bash
+uv add --dev <test-package-name>
 ```
 
 ## Stopping the Bot
