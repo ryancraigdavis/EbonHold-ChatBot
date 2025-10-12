@@ -14,6 +14,10 @@ async def load_all_guides():
 
     await kb.initialize()
 
+    # Clear existing collection to avoid stale data
+    logger.info("Clearing existing knowledge base...")
+    await kb.clear_collection()
+
     # Load guides from the data directory
     data_dir = Path(__file__).parent / "data"
     await kb.load_guides_from_directory(data_dir)

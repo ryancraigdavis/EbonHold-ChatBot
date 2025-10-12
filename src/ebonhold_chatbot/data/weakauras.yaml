@@ -1,0 +1,103 @@
+# Death Knight WeakAuras - Structured Data
+# This file contains structured information about recommended WeakAuras for easy searching
+
+weakauras:
+  - name: "Complete Death Knight UI (All Specs)"
+    url: "https://wago.io/44gEKqR3f"
+    category: "ui-package"
+    specs: ["blood", "frost", "unholy"]
+    keywords:
+      - "ui"
+      - "rotation helper"
+      - "cooldown tracking"
+      - "resource management"
+      - "complete ui"
+      - "all specs"
+    description: "Comprehensive UI package for all DK specs (Blood, Frost, Unholy). Includes rotation helpers, cooldown tracking, and resource management. Great starting point for any Death Knight player."
+    priority: "essential"
+
+  - name: "Item and Trinket Tracker"
+    url: "https://wago.io/SzufhZ2kd"
+    category: "tracking"
+    specs: ["blood", "frost", "unholy"]
+    keywords:
+      - "trinket"
+      - "item"
+      - "proc"
+      - "cooldown"
+      - "burst window"
+    description: "Tracks trinket cooldowns and procs. Shows item effects and durations. Essential for optimizing burst windows."
+    priority: "essential"
+
+  - name: "Disease Snapshotting WeakAura"
+    url: "https://wago.io/diseasesnapshotter"
+    category: "rotation"
+    specs: ["unholy"]
+    keywords:
+      - "disease"
+      - "snapshot"
+      - "unholy"
+      - "blood plague"
+      - "frost fever"
+      - "damage optimization"
+    description: "Tracks disease snapshots for optimal damage. Shows when your diseases are at peak strength. Critical for maximizing Unholy DK damage output."
+    priority: "essential"
+
+  - name: "Blood Tap/Plague Leech/Soul Reaper Tracker"
+    url: "https://wago.io/Zxz7oyMDE/9"
+    category: "rotation"
+    specs: ["unholy"]
+    keywords:
+      - "blood tap"
+      - "plague leech"
+      - "soul reaper"
+      - "blood charge"
+      - "rune management"
+    description: "Includes Blood Charge indicator that glows when enough stacks and you have a fully depleted rune. Plague Leech glows when you have TWO fully depleted runes and both diseases are present. Soul Reaper glows when target is under 35% HP and not on CD."
+    priority: "recommended"
+
+  - name: "Soulstone Active on Dead Tracker"
+    url: "https://wago.io/0ONd9BdZN"
+    category: "raid-utility"
+    specs: ["blood", "frost", "unholy"]
+    keywords:
+      - "soulstone"
+      - "battle res"
+      - "combat res"
+      - "bres"
+      - "warlock"
+      - "death and decay"
+      - "raid utility"
+    description: "Shows a soulstone icon on people that died (30 seconds, or until any buff is applied after they res/get battle ressed). Prevents wasting combat resses on people that have soulstones."
+    priority: "recommended"
+
+  - name: "Shek'zeer Fixate Warning"
+    url: "https://wago.io/JYX-JFjLv"
+    category: "boss-specific"
+    specs: ["blood", "frost", "unholy"]
+    boss: "Empress Shek'zeer"
+    raid: "Heart of Fear"
+    keywords:
+      - "shekzeer"
+      - "shek'zeer"
+      - "fixate"
+      - "heart of fear"
+      - "empress"
+      - "melee"
+    description: "Tells you how early you should move from the Set'thik Windblade Fixate during Grand Empress Shek'zeer so you don't get killed as melee."
+    priority: "situational"
+
+  - name: "MoP Dungeon Automarker"
+    url: "https://wago.io/wecuTpE5Y"
+    category: "dungeon-utility"
+    specs: ["blood", "frost", "unholy"]
+    keywords:
+      - "dungeon"
+      - "automarker"
+      - "markers"
+      - "skull"
+      - "star"
+      - "mythic plus"
+      - "m+"
+    description: "Automatically marks important dungeon mobs with unit markers (star, circle, diamond, etc.) as soon as you enter combat or mouse over them. Has a group with an aura for each dungeon, all talking to the same core/settings. Can toggle mobs in custom options and set up custom marking."
+    priority: "recommended"

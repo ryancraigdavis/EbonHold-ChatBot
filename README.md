@@ -48,10 +48,17 @@ A Discord chatbot powered by Groq LLM that answers Death Knight questions using 
    uv run doppler run -- python -m ebonhold_chatbot.load_guides
    ```
 
-6. **Run the bot**:
+6. **Run the bot locally**:
    ```bash
-   uv run bot
+   doppler run -- uv run -m ebonhold_chatbot
    ```
+
+7. **Optional: Deploy to AWS Lambda (Serverless)**:
+   ```bash
+   # Simple one-command deployment
+   doppler run -- python deploy.py
+   ```
+   See [LAMBDA_DEPLOYMENT.md](LAMBDA_DEPLOYMENT.md) for detailed instructions.
 
 ## Discord Bot Setup
 
@@ -66,11 +73,24 @@ A Discord chatbot powered by Groq LLM that answers Death Knight questions using 
 
 ## Usage
 
+### **Local/Gateway Version:**
 **Mention the bot**: `@YourBot what's the best frost DK rotation?`
-
 **Direct Message**: Send DM directly to the bot
 
+### **Lambda/Serverless Version:**
+**Slash Command**: `/lich what's the best frost DK rotation?`
+
 The bot searches your uploaded guides and provides contextual answers using Groq LLM.
+
+### **Deployment Comparison:**
+
+| Feature | Local/Gateway | Lambda/Serverless |
+|---------|---------------|-------------------|
+| **Trigger** | @mentions, DMs | `/lich` slash command |
+| **Cost** | ~$10/month (Fargate) | ~$0.50/month |
+| **Scaling** | Manual | Automatic |
+| **Maintenance** | Server management | Zero maintenance |
+| **Response** | Real-time | 3-second limit |
 
 ## Project Structure
 
@@ -97,10 +117,10 @@ The project includes comprehensive unit and integration tests using pytest.
 source .venv/bin/activate
 
 # Run all working tests
-uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py -v
+uv run pytest tests/unit/ -v
 
 # Run tests with coverage
-uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py --cov=src/ebonhold_chatbot --cov-report=html --cov-report=term-missing
+uv run pytest tests/unit/ --cov=src/ebonhold_chatbot --cov-report=html --cov-report=term-missing
 
 # Run individual test files
 uv run pytest tests/unit/test_config.py -v
@@ -111,10 +131,10 @@ uv run pytest tests/unit/test_simple_working.py -v
 **Testing with Doppler environment:**
 ```bash
 # Run tests with environment variables from doppler
-doppler run -- uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py -v
+doppler run -- uv run pytest tests/unit/ -v
 
 # Coverage with doppler
-doppler run -- uv run pytest tests/unit/test_config.py tests/unit/test_groq_client.py tests/unit/test_simple_working.py --cov=src/ebonhold_chatbot --cov-report=html
+doppler run -- uv run pytest tests/unit/ --cov=src/ebonhold_chatbot --cov-report=html
 ```
 
 ### Test Structure
