@@ -37,6 +37,24 @@ class KnowledgeBase:
 
         logger.info(f"ChromaDB initialized with {self.collection.count()} documents")
 
+    async def clear_collection(self):
+        """Clear all documents from the collection"""
+        await asyncio.get_event_loop().run_in_executor(
+            None, self._clear_collection_sync
+        )
+
+    def _clear_collection_sync(self):
+        """Synchronous method to clear the collection"""
+        try:
+            self.client.delete_collection(name=self.collection_name)
+            self.collection = self.client.get_or_create_collection(
+                name=self.collection_name,
+                metadata={"hnsw:space": "cosine"}
+            )
+            logger.info("Collection cleared successfully")
+        except Exception as e:
+            logger.error(f"Error clearing collection: {e}")
+
     async def load_guides_from_directory(self, guides_dir: str | Path):
         guides_dir = Path(guides_dir)
 
@@ -87,7 +105,7 @@ class KnowledgeBase:
         except Exception as e:
             logger.error(f"Error loading guide file {file_path}: {e}")
 
-    async def search(self, query: str, n_results: int = 3) -> str:
+    async def search(self, query: str, n_results: int = 5) -> str:
         try:
             results = await asyncio.get_event_loop().run_in_executor(
                 None,

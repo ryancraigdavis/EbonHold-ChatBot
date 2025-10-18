@@ -1,11 +1,13 @@
 import asyncio
 import logging
+from pathlib import Path
 import discord
 from discord.ext import commands
 
 from .config import Config
 from .groq_client import GroqClient
 from .knowledge_base import KnowledgeBase
+from .structured_search import StructuredSearch
 
 logger = logging.getLogger(__name__)
 
@@ -24,9 +26,14 @@ class EbonHoldBot(commands.Bot):
         self.groq_client = GroqClient(config.groq_api_key, config.groq_model)
         self.knowledge_base = KnowledgeBase(config.vector_db_path)
 
+        # Initialize structured search
+        data_dir = Path(__file__).parent / "data"
+        self.structured_search = StructuredSearch(data_dir=data_dir)
+
     async def setup_hook(self):
         logger.info("Setting up bot...")
         await self.knowledge_base.initialize()
+        self.structured_search.load_data()
         logger.info("Bot setup complete")
 
     async def on_ready(self):
@@ -47,8 +54,23 @@ class EbonHoldBot(commands.Bot):
     async def handle_chat(self, message):
         async with message.channel.typing():
             try:
-                # Get relevant context from knowledge base
-                context = await self.knowledge_base.search(message.content)
+                # Hybrid search: structured data + vector search
+                context_parts = []
+
+                # 1. Search structured WeakAura data
+                weakauras = self.structured_search.search_weakauras(message.content)
+                if weakauras:
+                    wa_context = self.structured_search.format_weakaura_results(weakauras)
+                    context_parts.append(wa_context)
+                    logger.info(f"Found {len(weakauras)} WeakAuras from structured search")
+
+                # 2. Get relevant context from vector knowledge base
+                vector_context = await self.knowledge_base.search(message.content)
+                if vector_context:
+                    context_parts.append("# Additional Information\n\n" + vector_context)
+
+                # Combine contexts
+                context = "\n\n".join(context_parts) if context_parts else ""
 
                 # Generate response with Groq
                 response = await self.groq_client.generate_response(
