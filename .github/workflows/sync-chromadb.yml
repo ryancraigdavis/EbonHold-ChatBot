@@ -1,0 +1,132 @@
+name: Sync ChromaDB to EFS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/ebonhold_chatbot/data/**'
+  workflow_dispatch:
+
+jobs:
+  sync-chromadb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Doppler CLI
+        uses: dopplerhq/cli-action@v3
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v4
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Build ChromaDB locally
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_SERVICE_TOKEN }}
+        run: |
+          # Create a temporary directory for ChromaDB
+          mkdir -p ./chroma_db_build
+
+          # Load guides into ChromaDB
+          doppler run -- uv run python -c "
+          import asyncio
+          from pathlib import Path
+          from src.ebonhold_chatbot.knowledge_base import KnowledgeBase
+
+          async def build():
+              kb = KnowledgeBase(db_path='./chroma_db_build')
+              await kb.initialize()
+              await kb.clear_collection()
+              data_dir = Path('src/ebonhold_chatbot/data')
+              await kb.load_guides_from_directory(data_dir)
+              stats = await kb.get_stats()
+              print(f'ChromaDB built with {stats[\"document_count\"]} documents')
+
+          asyncio.run(build())
+          "
+
+          # Create tarball for upload
+          tar -czf chroma_db.tar.gz -C chroma_db_build .
+
+      - name: Configure AWS credentials
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_SERVICE_TOKEN }}
+        run: |
+          export AWS_ACCESS_KEY_ID=$(doppler secrets get AWS_ACCESS_KEY_ID --plain)
+          export AWS_SECRET_ACCESS_KEY=$(doppler secrets get AWS_SECRET_ACCESS_KEY --plain)
+          export AWS_REGION=$(doppler secrets get AWS_REGION --plain)
+          echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
+          echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
+
+      - name: Get EFS configuration from Doppler
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_SERVICE_TOKEN }}
+        run: |
+          echo "EFS_FILE_SYSTEM_ID=$(doppler secrets get EFS_FILE_SYSTEM_ID --plain)" >> $GITHUB_ENV
+          echo "SUBNET_ID=$(doppler secrets get SUBNET_ID_1 --plain)" >> $GITHUB_ENV
+          echo "SECURITY_GROUP_ID=$(doppler secrets get EFS_SECURITY_GROUP_ID --plain)" >> $GITHUB_ENV
+
+      - name: Upload ChromaDB to S3
+        run: |
+          aws s3 cp chroma_db.tar.gz s3://ebonhold-discord-bot/chroma_db.tar.gz
+          echo "Uploaded to S3"
+
+      - name: Launch EC2 instance and sync to EFS
+        run: |
+          # Create user data script that will auto-terminate
+          cat > user-data.sh << 'EOF'
+          #!/bin/bash
+          set -ex
+
+          # Install dependencies
+          yum install -y amazon-efs-utils aws-cli
+
+          # Mount EFS
+          mkdir -p /mnt/efs
+          mount -t efs ${EFS_FILE_SYSTEM_ID}:/ /mnt/efs
+
+          # Download ChromaDB from S3
+          aws s3 cp s3://ebonhold-discord-bot/chroma_db.tar.gz /tmp/chroma_db.tar.gz
+
+          # Extract to EFS
+          mkdir -p /mnt/efs/chroma_db
+          tar -xzf /tmp/chroma_db.tar.gz -C /mnt/efs/chroma_db
+          chown -R 1000:1000 /mnt/efs/chroma_db
+
+          echo "ChromaDB synced to EFS successfully"
+
+          # Self-terminate
+          INSTANCE_ID=$(ec2-metadata --instance-id | cut -d " " -f 2)
+          aws ec2 terminate-instances --instance-ids $INSTANCE_ID --region ${AWS_REGION}
+          EOF
+
+          # Substitute environment variables
+          export EFS_FILE_SYSTEM_ID AWS_REGION
+          envsubst < user-data.sh > user-data-final.sh
+
+          # Launch EC2 instance (t4g.nano ARM instance)
+          INSTANCE_ID=$(aws ec2 run-instances \
+            --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-arm64 \
+            --instance-type t4g.nano \
+            --subnet-id $SUBNET_ID \
+            --security-group-ids $SECURITY_GROUP_ID \
+            --iam-instance-profile Name=EbonHold-EC2-EFS-Role \
+            --user-data file://user-data-final.sh \
+            --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=chromadb-sync}]' \
+            --query 'Instances[0].InstanceId' \
+            --output text)
+
+          echo "✅ Launched EC2 instance: $INSTANCE_ID"
+          echo "Instance will sync ChromaDB to EFS and auto-terminate"
+          echo "Monitor progress in EC2 Console or CloudWatch Logs"
+
+      - name: Notify completion
+        run: echo "✅ ChromaDB synced to EFS successfully"

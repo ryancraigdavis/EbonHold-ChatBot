@@ -1,175 +1,129 @@
-name: Deploy Lich King Bot to AWS Lambda
+name: Deploy Lambda Function with EFS
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch: # Allow manual trigger
-
-env:
-  AWS_REGION: us-east-1
-  FUNCTION_NAME: lich-king-discord-bot
-  PYTHON_VERSION: '3.12'
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'lambda/**'
+      - 'infrastructure/**'
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install Doppler CLI
+        uses: dopplerhq/cli-action@v3
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v3
+      - name: Install UV
+        uses: astral-sh/setup-uv@v4
 
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+      - name: Set up Python
+        run: uv python install 3.12
 
-    - name: Install Doppler CLI
-      uses: dopplerhq/cli-action@v3
+      - name: Configure AWS credentials
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_SERVICE_TOKEN }}
+        run: |
+          export AWS_ACCESS_KEY_ID=$(doppler secrets get AWS_ACCESS_KEY_ID --plain)
+          export AWS_SECRET_ACCESS_KEY=$(doppler secrets get AWS_SECRET_ACCESS_KEY --plain)
+          export AWS_REGION=$(doppler secrets get AWS_REGION --plain)
+          echo "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> $GITHUB_ENV
+          echo "AWS_REGION=$AWS_REGION" >> $GITHUB_ENV
 
-    - name: Create deployment package
-      run: |
-        echo "📦 Creating Lambda deployment package..."
+      - name: Install SAM CLI
+        run: pip install aws-sam-cli
 
-        # Create package directory
-        mkdir -p lambda_package
+      - name: Build Lambda package with UV
+        run: |
+          echo "📦 Building Lambda package..."
 
-        # Copy source code
-        cp -r src/ebonhold_chatbot lambda_package/
+          # Create package directory
+          mkdir -p package
 
-        # Install dependencies to package directory
-        pip install --target lambda_package/ \
-          aiofiles>=24.1.0 \
-          attrs>=25.3.0 \
-          chromadb>=1.1.0 \
-          groq>=0.31.1 \
-          PyNaCl>=1.5.0 \
-          aiohttp>=3.8.0
+          # Install dependencies using UV
+          uv pip install --python 3.12 --target package \
+            chromadb \
+            groq \
+            PyNaCl \
+            attrs \
+            pyyaml \
+            aiofiles
 
-        # Create zip file
-        cd lambda_package
-        zip -r ../lambda-deployment.zip .
-        cd ..
+          # Copy source code
+          cp -r src/ebonhold_chatbot package/
+          cp lambda/handler.py package/
 
-        echo "✅ Package created: lambda-deployment.zip"
-        echo "📊 Package size: $(du -h lambda-deployment.zip | cut -f1)"
+          # Copy data files (for structured search)
+          mkdir -p package/ebonhold_chatbot/data
+          cp -r src/ebonhold_chatbot/data/* package/ebonhold_chatbot/data/
 
-    - name: Update Lambda function code
-      run: |
-        echo "🚀 Updating Lambda function code..."
+          echo "✅ Lambda package built"
 
-        aws lambda update-function-code \
-          --function-name ${{ env.FUNCTION_NAME }} \
-          --zip-file fileb://lambda-deployment.zip
+      - name: Get Doppler secrets for SAM
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_SERVICE_TOKEN }}
+        run: |
+          echo "EFS_FILE_SYSTEM_ID=$(doppler secrets get EFS_FILE_SYSTEM_ID --plain)" >> $GITHUB_ENV
+          echo "EFS_ACCESS_POINT_ID=$(doppler secrets get EFS_ACCESS_POINT_ID --plain)" >> $GITHUB_ENV
+          echo "VPC_ID=$(doppler secrets get VPC_ID --plain)" >> $GITHUB_ENV
+          echo "SUBNET_ID_1=$(doppler secrets get SUBNET_ID_1 --plain)" >> $GITHUB_ENV
+          echo "SUBNET_ID_2=$(doppler secrets get SUBNET_ID_2 --plain)" >> $GITHUB_ENV
+          echo "SECURITY_GROUP_ID=$(doppler secrets get EFS_SECURITY_GROUP_ID --plain)" >> $GITHUB_ENV
+          echo "DISCORD_TOKEN=$(doppler secrets get DISCORD_TOKEN --plain)" >> $GITHUB_ENV
+          echo "DISCORD_PUBLIC_KEY=$(doppler secrets get DISCORD_PUBLIC_KEY --plain)" >> $GITHUB_ENV
+          echo "GROQ_API_KEY=$(doppler secrets get GROQ_API_KEY --plain)" >> $GITHUB_ENV
 
-        echo "✅ Lambda function updated successfully"
+      - name: Deploy with SAM
+        run: |
+          echo "🚀 Deploying to AWS Lambda..."
 
-    - name: Update Lambda environment variables with Doppler
-      env:
-        DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-      run: |
-        echo "🔧 Updating Lambda environment variables..."
+          cd infrastructure
+          sam deploy \
+            --template-file template.yaml \
+            --stack-name ebonhold-discord-bot \
+            --capabilities CAPABILITY_IAM \
+            --parameter-overrides \
+              EFSFileSystemId=$EFS_FILE_SYSTEM_ID \
+              EFSAccessPointId=$EFS_ACCESS_POINT_ID \
+              VpcId=$VPC_ID \
+              SubnetId1=$SUBNET_ID_1 \
+              SubnetId2=$SUBNET_ID_2 \
+              SecurityGroupId=$SECURITY_GROUP_ID \
+              DiscordToken=$DISCORD_TOKEN \
+              DiscordPublicKey=$DISCORD_PUBLIC_KEY \
+              GroqApiKey=$GROQ_API_KEY \
+            --no-confirm-changeset \
+            --no-fail-on-empty-changeset
 
-        # Get secrets from Doppler
-        DISCORD_TOKEN=$(doppler secrets get DISCORD_TOKEN --plain)
-        DISCORD_PUBLIC_KEY=$(doppler secrets get DISCORD_PUBLIC_KEY --plain)
-        GROQ_API_KEY=$(doppler secrets get GROQ_API_KEY --plain)
+          echo "✅ Deployment complete"
 
-        # Update Lambda environment variables
-        aws lambda update-function-configuration \
-          --function-name ${{ env.FUNCTION_NAME }} \
-          --environment Variables="{
-            \"DISCORD_TOKEN\":\"$DISCORD_TOKEN\",
-            \"DISCORD_PUBLIC_KEY\":\"$DISCORD_PUBLIC_KEY\",
-            \"GROQ_API_KEY\":\"$GROQ_API_KEY\"
-          }"
+      - name: Get API Gateway URL
+        run: |
+          API_URL=$(aws cloudformation describe-stacks \
+            --stack-name ebonhold-discord-bot \
+            --query 'Stacks[0].Outputs[?OutputKey==`ApiUrl`].OutputValue' \
+            --output text)
 
-        echo "✅ Environment variables updated"
+          echo "🎉 Deployment successful!"
+          echo ""
+          echo "📊 API Gateway URL: $API_URL"
+          echo ""
+          echo "📋 Next steps:"
+          echo "1. Go to Discord Developer Portal"
+          echo "2. Set Interactions Endpoint URL to: $API_URL"
+          echo "3. Test with /lich command in your Discord server"
 
-    - name: Wait for function update to complete
-      run: |
-        echo "⏳ Waiting for function update to complete..."
-        aws lambda wait function-updated \
-          --function-name ${{ env.FUNCTION_NAME }}
-        echo "✅ Function update completed"
-
-    - name: Test Lambda function
-      run: |
-        echo "🧪 Testing Lambda function..."
-
-        # Create a test Discord ping event
-        cat > test-event.json << 'EOF'
-        {
-          "headers": {
-            "x-signature-ed25519": "test",
-            "x-signature-timestamp": "1234567890"
-          },
-          "body": "{\"type\": 1}"
-        }
-        EOF
-
-        # Invoke function (this will fail signature validation but shows it's working)
-        RESPONSE=$(aws lambda invoke \
-          --function-name ${{ env.FUNCTION_NAME }} \
-          --payload file://test-event.json \
-          response.json 2>&1 || true)
-
-        echo "📝 Lambda response:"
-        cat response.json
-
-        # Check if function executed (even with expected auth failure)
-        if grep -q "statusCode" response.json; then
-          echo "✅ Lambda function is responding"
-        else
-          echo "❌ Lambda function test failed"
-          exit 1
-        fi
-
-    - name: Get function info
-      run: |
-        echo "📋 Lambda function information:"
-        aws lambda get-function \
-          --function-name ${{ env.FUNCTION_NAME }} \
-          --query 'Configuration.[FunctionName,Runtime,LastModified,CodeSize]' \
-          --output table
-
-    - name: Register slash commands
-      env:
-        DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-      run: |
-        echo "📝 Registering Discord slash commands..."
-
-        # Install dependencies for the script
-        pip install aiohttp
-
-        # Run the registration script with Doppler
-        doppler run -- python scripts/register_slash_commands.py || true
-
-        echo "✅ Slash command registration completed"
-
-    - name: Deployment summary
-      run: |
-        echo "🎉 Deployment completed successfully!"
-        echo ""
-        echo "📊 Summary:"
-        echo "- Function: ${{ env.FUNCTION_NAME }}"
-        echo "- Region: ${{ env.AWS_REGION }}"
-        echo "- Runtime: Python ${{ env.PYTHON_VERSION }}"
-        echo ""
-        echo "📋 Next steps:"
-        echo "1. Verify Discord Interactions Endpoint URL is set"
-        echo "2. Test /lich command in Discord"
-        echo "3. Monitor CloudWatch logs for any issues"
-        echo ""
-        echo "🔗 Useful links:"
-        echo "- Lambda Console: https://console.aws.amazon.com/lambda/home?region=${{ env.AWS_REGION }}#/functions/${{ env.FUNCTION_NAME }}"
-        echo "- CloudWatch Logs: https://console.aws.amazon.com/cloudwatch/home?region=${{ env.AWS_REGION }}#logsV2:log-groups/log-group/%2Faws%2Flambda%2F${{ env.FUNCTION_NAME }}"
+      - name: Register Discord slash commands
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_SERVICE_TOKEN }}
+        run: |
+          echo "📝 Registering slash commands..."
+          doppler run -- uv run python scripts/register_slash_commands.py
+          echo "✅ Slash commands registered"

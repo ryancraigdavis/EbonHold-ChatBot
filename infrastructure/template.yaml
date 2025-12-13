@@ -1,0 +1,86 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: EbonHold Discord Bot - Lambda with EFS
+
+Parameters:
+  EFSFileSystemId:
+    Type: String
+    Description: EFS File System ID
+  EFSAccessPointId:
+    Type: String
+    Description: EFS Access Point ID
+  VpcId:
+    Type: String
+    Description: VPC ID
+  SubnetId1:
+    Type: String
+    Description: First Subnet ID
+  SubnetId2:
+    Type: String
+    Description: Second Subnet ID
+  SecurityGroupId:
+    Type: String
+    Description: Security Group ID for EFS access
+  DiscordToken:
+    Type: String
+    Description: Discord Bot Token
+    NoEcho: true
+  DiscordPublicKey:
+    Type: String
+    Description: Discord Public Key
+    NoEcho: true
+  GroqApiKey:
+    Type: String
+    Description: Groq API Key
+    NoEcho: true
+
+Resources:
+  # Lambda function
+  EbonHoldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ebonhold-discord-bot
+      CodeUri: ../lambda/
+      Handler: handler.lambda_handler
+      Runtime: python3.12
+      MemorySize: 512
+      Timeout: 30
+      Environment:
+        Variables:
+          DISCORD_TOKEN: !Ref DiscordToken
+          DISCORD_PUBLIC_KEY: !Ref DiscordPublicKey
+          GROQ_API_KEY: !Ref GroqApiKey
+          EFS_MOUNT_PATH: /mnt/efs/chroma_db
+      VpcConfig:
+        SecurityGroupIds:
+          - !Ref SecurityGroupId
+        SubnetIds:
+          - !Ref SubnetId1
+          - !Ref SubnetId2
+      FileSystemConfigs:
+        - Arn: !Sub 'arn:aws:elasticfilesystem:${AWS::Region}:${AWS::AccountId}:access-point/${EFSAccessPointId}'
+          LocalMountPath: /mnt/efs
+      Events:
+        DiscordInteraction:
+          Type: Api
+          Properties:
+            Path: /interactions
+            Method: post
+            RestApiId: !Ref DiscordApi
+
+  # API Gateway
+  DiscordApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: ebonhold-discord-api
+      StageName: prod
+      EndpointConfiguration:
+        Type: REGIONAL
+
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value: !Sub 'https://${DiscordApi}.execute-api.${AWS::Region}.amazonaws.com/prod/interactions'
+  FunctionArn:
+    Description: Lambda Function ARN
+    Value: !GetAtt EbonHoldFunction.Arn
